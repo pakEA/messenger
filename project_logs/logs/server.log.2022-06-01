@@ -1,0 +1,12 @@
+2022-06-01 02:16:19,339        INFO       server_log_config    Инфо
+2022-06-01 02:16:19,340        DEBUG      server_log_config    Отладка
+2022-06-01 02:16:19,340        ERROR      server_log_config    Ошибка
+2022-06-01 02:16:19,340        CRITICAL   server_log_config    Критично
+2022-06-01 02:28:15,891        INFO       server               Установлено соединение с: ('127.0.0.1', 33286)
+2022-06-01 02:28:15,891        DEBUG      server               Получено сообщение от клиента: {'action': 'presence', 'time': 1654075695.8909628, 'user': {'account_name': 'Guest'}}
+2022-06-01 02:28:15,892        DEBUG      server               Проверка сообщения от клиента: {'action': 'presence', 'time': 1654075695.8909628, 'user': {'account_name': 'Guest'}}
+2022-06-01 02:28:15,892        INFO       server               Сформирован ответ клиенту: {'response': 200}
+2022-06-01 02:29:35,447        INFO       server               Установлено соединение с: ('127.0.0.1', 33288)
+2022-06-01 02:29:35,447        DEBUG      server               Получено сообщение от клиента: {'action': 'presence', 'time': 1654075775.4469676, 'user': {'account_name': 'Guest'}}
+2022-06-01 02:29:35,447        DEBUG      server               Проверка сообщения от клиента: {'action': 'presence', 'time': 1654075775.4469676, 'user': {'account_name': 'Guest'}}
+2022-06-01 02:29:35,448        INFO       server               Сформирован ответ клиенту: {'response': 200}

@@ -1,0 +1,17 @@
+2022-06-01 02:15:29,329        INFO       client_log_config    Инфо
+2022-06-01 02:15:29,330        DEBUG      client_log_config    Отладка
+2022-06-01 02:15:29,330        ERROR      client_log_config    Ошибка
+2022-06-01 02:15:29,330        CRITICAL   client_log_config    Критично
+2022-06-01 02:18:01,680        INFO       client_log_config    Инфо
+2022-06-01 02:18:01,681        DEBUG      client_log_config    Отладка
+2022-06-01 02:18:01,681        ERROR      client_log_config    Ошибка
+2022-06-01 02:18:01,681        CRITICAL   client_log_config    Критично
+2022-06-01 02:28:15,891        DEBUG      client               Сформировано "presence" сообщение дляпользователя: Guest
+2022-06-01 02:28:15,892        DEBUG      client               Получено сообщение от сервера: {'response': 200}
+2022-06-01 02:28:15,892        DEBUG      client               Получен ответ от сервера "200: OK"
+2022-06-01 02:29:35,446        DEBUG      client               Сформировано "presence" сообщение дляпользователя: Guest
+2022-06-01 02:29:35,455        DEBUG      client               Получено сообщение от сервера: {'response': 200}
+2022-06-01 02:29:35,455        DEBUG      client               Получен ответ от сервера "200: OK"
+2022-06-02 01:48:06,243        DEBUG      client               Сформировано "presence" сообщение дляпользователя: Guest
+2022-06-02 01:48:06,247        DEBUG      client               Получено сообщение от сервера: {'response': 200}
+2022-06-02 01:48:06,247        DEBUG      client               Получен ответ от сервера "200: OK"
