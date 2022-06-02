@@ -3,10 +3,16 @@
 import sys
 import json
 import time
+import logging
+
 from socket import socket, AF_INET, SOCK_STREAM
 from common.variables import ACTION, ACCOUNT_NAME, RESPONSE, \
     PRESENCE, TIME, USER, ERROR, DEFAULT_PORT, DEFAULT_IP_ADDRESS
 from common.utils import get_message, send_message
+from project_logs.config import client_log_config
+
+# Инициализируем логгер
+CLIENT_LOGGER = logging.getLogger('messenger.client')
 
 
 def create_presence(account_name='Guest'):
@@ -22,6 +28,8 @@ def create_presence(account_name='Guest'):
             ACCOUNT_NAME: account_name
         }
     }
+    CLIENT_LOGGER.debug(f'Сформировано "{PRESENCE}" сообщение для'
+                        f'пользователя: {account_name}')
     return out
 
 
@@ -31,6 +39,7 @@ def process_ans(message):
     :param message:
     :return:
     """
+    CLIENT_LOGGER.debug(f'Получено сообщение от сервера: {message}')
     if RESPONSE in message:
         if message[RESPONSE] == 200:
             return '200: OK'
@@ -47,13 +56,15 @@ def main():
         server_address = sys.argv[1]
         server_port = int(sys.argv[2])
         if 1024 > server_port > 65535:
+            CLIENT_LOGGER.critical(f'Порт "{server_port}" находится вне '
+                                   f'диапазона от 1024 до 65535')
             raise ValueError
     except IndexError:
         server_address = DEFAULT_IP_ADDRESS
         server_port = DEFAULT_PORT
     except ValueError:
-        print('В качестве порта может быть указано только число в '
-              'диапазоне от 1024 до 65535!')
+        CLIENT_LOGGER.warning('В качестве порта может быть указано только '
+                              'число в диапазоне от 1024 до 65535!')
         sys.exit(1)
 
     # Инициализация сокета и обмен
@@ -63,9 +74,9 @@ def main():
     send_message(transport, message_to_server)
     try:
         answer = process_ans(get_message(transport))
-        print(answer)
+        CLIENT_LOGGER.debug(f'Получен ответ от сервера "{answer}"')
     except(ValueError, json.JSONDecodeError):
-        print('Не удалось расшифровать сообщение сервера.')
+        CLIENT_LOGGER.error('Не удалось расшифровать сообщение сервера.')
 
 
 if __name__ == '__main__':
