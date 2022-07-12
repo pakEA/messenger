@@ -1,7 +1,9 @@
 import json
 from common.variables import MAX_PACKAGE_LENGTH, ENCODING
+from decors import log
 
 
+@log
 def get_message(client):
     """
     Функция принимает байты и выдает словарь, если принято что-то другое
@@ -19,6 +21,7 @@ def get_message(client):
     raise ValueError
 
 
+@log
 def send_message(sock, message):
     """
     Функция принимает словарь и отправляет его
