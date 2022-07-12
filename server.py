@@ -9,11 +9,14 @@ from common.variables import ACTION, ACCOUNT_NAME, RESPONSE, \
     MAX_CONNECTIONS, PRESENCE, TIME, USER, ERROR, DEFAULT_PORT
 from common.utils import get_message, send_message
 from project_logs.config import server_log_config
+from decors import log
+
 
 # Инициализируем логгер
-SERVER_LOGGER = logging.getLogger('messenger.server')
+LOGGER = logging.getLogger('messenger.server')
 
 
+@log
 def proccess_client_message(message):
     """
     Функция принимает словарь (сообщение от клиента), проверяет корректность,
@@ -21,7 +24,7 @@ def proccess_client_message(message):
     :param message:
     :return:
     """
-    SERVER_LOGGER.debug(f'Проверка сообщения от клиента: {message}')
+    LOGGER.debug(f'Проверка сообщения от клиента: {message}')
     if ACTION in message and message[ACTION] == PRESENCE and TIME in message \
             and USER in message and message[USER][ACCOUNT_NAME] == 'Guest':
         return {RESPONSE: 200}
@@ -43,14 +46,14 @@ def main():
         else:
             listen_port = DEFAULT_PORT
         if 1024 > listen_port > 65535:
-            SERVER_LOGGER.critical(f'Порт "{listen_port}" находится вне '
+            LOGGER.critical(f'Порт "{listen_port}" находится вне '
                                    f'диапазона от 1024 до 65535')
             raise ValueError
     except IndexError:
-        SERVER_LOGGER.info('После параметра "-p" необходимо указать номер порта')
+        LOGGER.info('После параметра "-p" необходимо указать номер порта')
         sys.exit(1)
     except ValueError:
-        SERVER_LOGGER.warning('В качестве порта может быть указано только число в '
+        LOGGER.warning('В качестве порта может быть указано только число в '
                               'диапазоне от 1024 до 65535!')
         sys.exit(1)
 
@@ -61,7 +64,7 @@ def main():
         else:
             listen_address = ''
     except IndexError:
-        SERVER_LOGGER.info('После параметра "-a" необходимо указать адрес, '
+        LOGGER.info('После параметра "-a" необходимо указать адрес, '
                            'который будет слушать сервер')
         sys.exit(1)
 
@@ -74,17 +77,17 @@ def main():
 
     while True:
         client, client_address = transport.accept()
-        SERVER_LOGGER.info(f'Установлено соединение с: {client_address}')
+        LOGGER.info(f'Установлено соединение с: {client_address}')
         try:
             message_from_client = get_message(client)
-            SERVER_LOGGER.debug(f'Получено сообщение от клиента: '
+            LOGGER.debug(f'Получено сообщение от клиента: '
                                 f'{message_from_client}')
             response = proccess_client_message(message_from_client)
-            SERVER_LOGGER.info(f'Сформирован ответ клиенту: {response}')
+            LOGGER.info(f'Сформирован ответ клиенту: {response}')
             send_message(client, response)
             client.close()
         except(ValueError, json.JSONDecodeError):
-            SERVER_LOGGER.error('Принято некорректное сообщение от клиента.')
+            LOGGER.error('Принято некорректное сообщение от клиента.')
             client.close()
 
 
