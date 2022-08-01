@@ -21,6 +21,7 @@ TIME = 'time'
 USER = 'user'
 ACCOUNT_NAME = 'account_name'
 SENDER = 'sender'
+DESTINATION = 'to'
 
 # Прочие ключи
 PRESENCE = 'presence'
@@ -28,6 +29,16 @@ RESPONSE = 'response'
 ERROR = 'error'
 MESSAGE = 'message'
 MESSAGE_TEXT = 'mess_text'
+EXIT = 'exit'
 
 # Уровень логирования
 LOGGING_LEVEL = logging.DEBUG
+
+# Словари - ответы:
+# 200
+RESPONSE_200 = {RESPONSE: 200}
+# 400
+RESPONSE_400 = {
+    RESPONSE: 400,
+    ERROR: None
+}
