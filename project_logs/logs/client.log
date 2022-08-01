@@ -60,3 +60,12 @@
 2022-07-27 03:33:47,191        DEBUG      client               Разбор приветственного сообщения от сервера: {'response': 200}
 2022-07-27 03:33:47,195        DEBUG      decors               Была вызвана функция process_response_ans c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main(). Вызов из функции main.
 2022-07-27 03:33:47,197        INFO       client               Установлено соединение с сервером. Ответ сервера: 200 : OK
+2022-08-01 03:30:29,243        DEBUG      decors               Была вызвана функция arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main(). Вызов из функции main.
+2022-08-01 03:30:34,253        INFO       client               Запущен клиент с парамертами: адрес сервера: 127.0.0.1, порт: 7777, имя пользователя: qwe
+2022-08-01 03:30:34,258        DEBUG      client               Сформировано presence сообщение для пользователя qwe
+2022-08-01 03:30:34,259        DEBUG      decors               Была вызвана функция create_presence c параметрами ('qwe',), {}. Вызов из модуля __main__. Вызов из функции main(). Вызов из функции main.
+2022-08-01 03:30:34,260        DEBUG      decors               Была вызвана функция send_message c параметрами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56598), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1659349834.2586107, 'user': {'account_name': 'qwe'}}), {}. Вызов из модуля common.utils. Вызов из функции main(). Вызов из функции main.
+2022-08-01 03:30:34,413        DEBUG      decors               Была вызвана функция get_message c параметрами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56598), raddr=('127.0.0.1', 7777)>,), {}. Вызов из модуля common.utils. Вызов из функции main(). Вызов из функции main.
+2022-08-01 03:30:34,413        DEBUG      client               Разбор приветственного сообщения от сервера: {'response': 400, 'error': 'Bad Request'}
+2022-08-01 03:30:34,413        ERROR      client               При установке соединения сервер вернул ошибку: 400 : Bad Request
+2022-08-01 04:01:41,377        DEBUG      decors               Была вызвана функция arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main(). Вызов из функции main.
